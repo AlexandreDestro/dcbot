@@ -17,10 +17,13 @@ const client = new Client({ intents: [
     GatewayIntentBits.GuildMessages, 
     GatewayIntentBits.MessageContent,
     GatewayIntentBits.GuildVoiceStates
-] });
+    ],
+    retryLimit: 5,
+ });
+
 client.commands = new Collection();
 client.commandArray = [];
-client.prefix = new Map();
+client.prefix = new Collection();
 
 ////////////////////////////
 
@@ -73,7 +76,7 @@ client.prefix = new Map();
             require(`./prefix/${pfolder}/${pfile}`);
         for (arx of prefixFiles) {
             const Cmd = require(`./prefix/${pfolder}/` + arx)
-            client.prefix.set(Cmd.name, Cmd, Cmd.titulo, Cmd.uso)
+            client.prefix.set(Cmd.name, Cmd, Cmd.titulo, Cmd.uso, Cmd.aliases)
         }
     }
 
@@ -84,9 +87,14 @@ client.on('messageCreate', async message => {
     if (!message.content.startsWith(prefix) || message.author.bot) {return};
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commando = args.shift().toLowerCase();
+    
+    //clear
     const regexNumeros = /[0-9]/g;
     var commandoclear = commando.replace(regexNumeros, '');
-    var prefixcmd = client.prefix.get(commandoclear);
+
+    //nome ou alias
+    var prefixcmd = client.prefix.get(commandoclear) || client.prefix.find(cmd => cmd.aliases && cmd.aliases.includes(commandoclear));
+    
     if (prefixcmd) {
         
         prefixcmd.run(client, message, args, commando);
@@ -108,3 +116,26 @@ for (const folder of functionFolders) {
 client.handleEvents();
 client.handleCommands();
 client.login(token);
+
+
+
+// tratar erros
+
+client.on('error', (error) => {
+    console.error('Erro inesperado:', error);
+  });
+  
+  client.on('shardError', (error) => {
+    console.error('Erro em um shard:', error);
+  });
+
+
+
+  process.on('unhandledRejection', (reason, promise) => {
+    console.error('Rejeição não tratada em:', promise, 'Razão:', reason);
+  });
+  
+  process.on('uncaughtException', (error) => {
+    console.error('Exceção não capturada:', error);
+  });
+  

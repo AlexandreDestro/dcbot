@@ -1,8 +1,8 @@
 const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
-    name: 'd',
-    aliases: ['dado'],
+    name: '%',
+    aliases: ['p'],
     description: 'Rola um dado d20',
     titulo: '!d20',
     uso: '!d30, !3d25, !5d, !d',
@@ -52,7 +52,7 @@ module.exports = {
           for (let i = 0; i < rollgroup.length; i++){
             rollgroup[i] = `${rollgroup[i].join(', ')}`
           }
-          //console.log(rollgroup);
+          console.log(rollgroup);
 
 
           let r_final = `${rollgroup.join(', ')}`

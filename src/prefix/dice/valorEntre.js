@@ -1,5 +1,6 @@
 module.exports = {
     name: 'a',
+    aliases: [],
     description: 'Gera um valor aleatório entre 2 valores',
     titulo: '!1a10',
     uso: '!8a16, !2a10 3, !a',

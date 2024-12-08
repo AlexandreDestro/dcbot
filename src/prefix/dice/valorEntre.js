@@ -60,7 +60,7 @@ let apend3 = `\n-# ${autor}`;
 let mensagem = `${min} ~ ${max}:  ${apend1} \n# **[ ${rolls.join(', ')} ]**${apend2} ${apend3}`;
         
         if (mensagem.length > 2000){
-          mensagem = `${min} ~ ${max}:  ${apend1} \nErro: resposta ultrapaça 2000 caracteres ${apend2} ${apend3}`;
+          mensagem = `${min} ~ ${max}:  ${apend1} \nErro: muitos caracteres ${apend2} ${apend3}`;
         }
         message.channel.send(mensagem);
         return

@@ -3,9 +3,9 @@ const { EmbedBuilder } = require('discord.js');
 module.exports = {
     name: '%',
     aliases: ['p'],
-    description: 'Rola um dado d20',
-    titulo: '!d20',
-    uso: '!d30, !3d25, !5d, !d',
+    description: 'Rola um dado em forma de porcentagem retornando verdadiro ou falso',
+    titulo: '!50%',
+    uso: '!50%, !30p, !20p 5, !p',
 
     run: (client, message, args, commando, commandoclear) => {
     

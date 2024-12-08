@@ -97,7 +97,7 @@ client.on('messageCreate', async message => {
     
     if (prefixcmd) {
         
-        prefixcmd.run(client, message, args, commando);
+        prefixcmd.run(client, message, args, commando, commandoclear);
     }
 });
 

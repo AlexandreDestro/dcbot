@@ -7,63 +7,60 @@ module.exports = {
     titulo: '!d20',
     uso: '!d30, !3d25, !5d, !d',
 
-    run: (client, message, args, commando) => {
+    run: (client, message, args, commando, commandoclear) => {
     
         
-        var [numberOfRolls, numberOfFaces] = commando.split('d').map(arg => parseInt(arg));
+        var [porcento] = commando.split(`${commandoclear}`).map(arg => parseInt(arg));
         var rollmulti = args[0]
 
         let mensagem = ` `;
         // Separa o número de rolagens e o número de lados do dado
         
-        if (numberOfRolls <= 0 || isNaN(numberOfRolls)) {
-          numberOfRolls = 1;
+        if (porcento <= 0 || isNaN(porcento)) {
+          porcento = 1;
         }
-        if (numberOfFaces <= 0 || isNaN(numberOfFaces)) {
-          numberOfFaces = 20;
-        }
+       
         if (rollmulti <= 0 || isNaN(rollmulti)) {
           rollmulti = 1;
         }
 
-        if (numberOfRolls >= 1000){
+        if (rollmulti >= 1000){
           mensagem = `Erro: ta de brincadeira?🤨`;
           message.reply(mensagem);
         }
-        if (numberOfRolls < 1000){
-          mensagem = rolarDado();
+        if (rollmulti < 1000){
+          mensagem = porcentar();
         }
 
         // Realiza as rolagens dos dados
-        function rolarDado() {
-          let sumgroup = [];
+        function porcentar() {
+          let soma = 0;
           let rollgroup = [];
           for (let ii = 0; ii < rollmulti; ii++) {
-            let rolls = [];
-            let sum = 0;
-            for (let i = 0; i < numberOfRolls; i++) {
-                const rollResult = Math.floor(Math.random() * numberOfFaces) + 1;
-                rolls.push(rollResult);
-                sum += rollResult;
+            const rollResult = Math.floor(Math.random() * 100) + 1;
+             var b = "❌"
+            if (rollResult <= porcento) {
+              soma ++
+              b = ":white_check_mark:"
             }
-            rollgroup.push(rolls);
-            sumgroup.push(sum);
+            rollgroup.push(b);
+            
           }
-          for (let i = 0; i < rollgroup.length; i++){
-            rollgroup[i] = `${rollgroup[i].join(', ')}`
-          }
-          console.log(rollgroup);
+          //console.log(rollgroup);
 
 
           let r_final = `${rollgroup.join(', ')}`
-          let sum = `${sumgroup.join(', ')}`      
+          //let sum = `${soma.join(', ')}`      
           let apend1 = " ";
-          if (numberOfRolls > 1) {apend1 = `\nSoma: ${sum}`};
+          let cmd_txt;
+          if (rollmulti > 1) {apend1 = `\nAcertos: ${soma}`; cmd_txt = `${porcento}% (${rollmulti}x)`}
+           else{cmd_txt = `${porcento}%`}
+           
           let autor = message.author.displayName;
           let apend2 = `\n-# ${autor}`;
 
           
-          let cmd_txt = `${numberOfRolls}d${numberOfFaces}`
+          
 
           let mensagem = `${cmd_txt}: \n# **[ ${r_final} ]** ${apend1} ${apend2}`;
           

@@ -5,13 +5,13 @@ module.exports = {
     titulo: '!1a10',
     uso: '!8a16, !2a10 3, !a',
 
-    run: (client, message, args, commando) => {
+    run: (client, message, args, commando, commandoclear) => {
 
 let min = 1;
 let max = 10;
 let multi = 1;
 
-[min, max] = commando.split('a').map(arg => parseInt(arg));
+[min, max] = commando.split(`${commandoclear}`).map(arg => parseInt(arg));
 if(args[0]){
   multi = args[0]
 }

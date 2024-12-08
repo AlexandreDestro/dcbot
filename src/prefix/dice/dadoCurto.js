@@ -7,10 +7,10 @@ module.exports = {
     titulo: '!d20',
     uso: '!d30, !3d25, !5d, !d',
 
-    run: (client, message, args, commando) => {
+    run: (client, message, args, commando, commandoclear) => {
     
         
-        var [numberOfRolls, numberOfFaces] = commando.split('d').map(arg => parseInt(arg));
+        var [numberOfRolls, numberOfFaces] = commando.split(`${commandoclear}`).map(arg => parseInt(arg));
         var rollmulti = args[0]
 
         let mensagem = ` `;

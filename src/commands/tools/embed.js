@@ -8,7 +8,7 @@ module.exports = {
         const embed = new EmbedBuilder()
         .setTitle(`Xandobot`) 
         .setDescription("Xandobot")
-        .setColor(0x18e1ee)
+        .setColor(0xffffff)
         .setImage(client.user.displayAvatarURL())
         .setThumbnail(client.user.displayAvatarURL())
         .setTimestamp(Date.now())

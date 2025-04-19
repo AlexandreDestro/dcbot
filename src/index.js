@@ -2,6 +2,13 @@ require("dotenv").config();
 const { token } = process.env;
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const fs = require('fs');
+const ytdlp = require("yt-dlp-exec");
+
+
+//teste
+// ytdlp("https://www.youtube.com/watch?v=ThzsWeSFHIc")
+//   .then(output => console.log(output))
+//  .catch(error => console.error(error));
 
 //music-player req.
 const {REST} = require("@discordjs/rest");
@@ -81,7 +88,7 @@ client.prefix = new Collection();
     }
 
 // prefix
-client.on('messageCreate', async message => {
+client.on('messageCreate', async (message) => {
     const prefix = "!";
 
     if (!message.content.startsWith(prefix) || message.author.bot) {return};

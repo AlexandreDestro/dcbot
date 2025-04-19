@@ -1,6 +1,7 @@
 module.exports = {
-    name: 'ping',
+    name: null,
     description: 'returns pong',
+    titulo: '!ping',
 
     run: (client, message, interaction) => {
     

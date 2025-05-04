@@ -1,9 +1,18 @@
 require("dotenv").config();
-require("./express-server")
 const { token } = process.env;
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const fs = require('fs');
 const ytdlp = require("yt-dlp-exec");
+
+
+// porta
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.get("/", (req, res) => res.send("Bot is running!"));
+app.listen(port, () => console.log(`Listening on port ${port}`));
+
 
 //teste
 // ytdlp("https://www.youtube.com/watch?v=ThzsWeSFHIc")

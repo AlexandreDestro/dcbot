@@ -13,7 +13,7 @@
     "@discord-player/core": "^0.1.1",
     "@discord-player/extractor": "^4.5.1",
     "@discordjs/builders": "^1.8.2",
-    "@discordjs/opus": "^0.9.0",
+    "@discordjs/opus": "^0.10.0",
     "@discordjs/rest": "^2.3.0",
     "@discordjs/voice": "^0.17.0",
     "discord-api-types": "^0.37.93",

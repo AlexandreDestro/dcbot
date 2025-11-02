@@ -32,11 +32,11 @@ if (min > max) {
 
 
 
-if (multi >= 1000){
+if (multi >= 10000){
   mensagem = `Erro: ta de brincadeira?🤨`;
   message.reply(mensagem);
 }
-if (multi < 1000){
+else{
   mensagem = valorEntre();
 }
 

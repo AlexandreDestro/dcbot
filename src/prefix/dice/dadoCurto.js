@@ -26,7 +26,7 @@ module.exports = {
           rollmulti = 1;
         }
 
-        if (numberOfRolls >= 1000 ||  rollmulti >= 100){
+        if (numberOfRolls >= 10000 ||  rollmulti >= 1000){
           mensagem = `Erro: ta de brincadeira?🤨`;
           message.reply(mensagem);
         }
@@ -73,7 +73,7 @@ module.exports = {
           if (rollmulti > 1) {mensagem = `${cmd_txt} (${rollmulti}x): \n${r_final} ${apend1} \nTotal: ${somaTotal} ${apend2}`;}
           
           if (mensagem.length > 2000){
-            mensagem = `${cmd_txt}: \nErro: muitos caracteres ${apend1} ${apend2}`;
+            mensagem = `${cmd_txt}: \nErro: muitos caracteres \nTotal: ${somaTotal} ${apend2}`;
           }
           message.channel.send(mensagem);
           return 

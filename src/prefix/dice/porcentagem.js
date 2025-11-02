@@ -24,11 +24,11 @@ module.exports = {
           rollmulti = 1;
         }
 
-        if (rollmulti >= 1000){
+        if (rollmulti >= 10000){
           mensagem = `Erro: ta de brincadeira?🤨`;
           message.reply(mensagem);
         }
-        if (rollmulti < 1000){
+        else{
           mensagem = porcentar();
         }
 
